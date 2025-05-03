@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rojane & James Wedding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #faf7f2;
+            color: #333;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+                        url('https://images.unsplash.com/photo-1519225421980-715cb0215a31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .floral-divider {
+            position: relative;
+            height: 50px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23d4a373"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23d4a373"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23d4a373"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .basketball-pattern {
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="45" fill="none" stroke="%23d4a373" stroke-width="2"/><path d="M50,5 A45,45 0 0,1 95,50 A45,45 0 0,1 50,95 A45,45 0 0,1 5,50 A45,45 0 0,1 50,5 Z" fill="none" stroke="%23d4a373" stroke-width="2"/><path d="M50,5 L50,95 M5,50 L95,50" stroke="%23d4a373" stroke-width="2"/></svg>');
+            background-size: 30px 30px;
+            opacity: 0.1;
+        }
+        
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+        }
+        
+        .map-container {
+            height: 400px;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                background-position: 60% center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 basketball-pattern"></div>
+        <div class="container mx-auto px-6 z-10 text-center">
+            <div class="bg-white bg-opacity-90 p-8 md:p-12 rounded-lg shadow-lg max-w-3xl mx-auto">
+                <h4 class="text-xl md:text-2xl font-light tracking-widest text-amber-800 mb-2">We're Getting Married!</h4>
+                <h1 class="heading-font text-4xl md:text-6xl font-bold text-amber-900 mb-4">Rojane & James</h1>
+                <div class="w-24 h-1 bg-amber-700 mx-auto mb-6"></div>
+                <p class="text-lg md:text-xl text-gray-700 mb-6">June 20, 2025 • Fortridge Pavilion, Dauis, Bohol</p>
+                <div class="flex justify-center space-x-4 mb-8">
+                    <div class="countdown-box rounded-lg p-4 text-center w-20">
+                        <div class="text-3xl font-bold text-amber-800" id="countdown-days">00</div>
+                        <div class="text-xs uppercase text-gray-600">Days</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-4 text-center w-20">
+                        <div class="text-3xl font-bold text-amber-800" id="countdown-hours">00</div>
+                        <div class="text-xs uppercase text-gray-600">Hours</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-4 text-center w-20">
+                        <div class="text-3xl font-bold text-amber-800" id="countdown-minutes">00</div>
+                        <div class="text-xs uppercase text-gray-600">Minutes</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-4 text-center w-20">
+                        <div class="text-3xl font-bold text-amber-800" id="countdown-seconds">00</div>
+                        <div class="text-xs uppercase text-gray-600">Seconds</div>
+                    </div>
+                </div>
+                <a href="#rsvp" class="inline-block bg-amber-700 hover:bg-amber-800 text-white font-medium py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                    RSVP Now
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="floral-divider"></div>
+    
+    <!-- Couple Section -->
+    <section class="py-20 bg-amber-50">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-font text-3xl md:text-4xl text-center text-amber-900 mb-16">Our Love Story</h2>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center mb-16">
+                <div class="md:w-1/3 text-center mb-8 md:mb-0">
+                    <div class="rounded-full overflow-hidden border-4 border-amber-700 w-48 h-48 mx-auto shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Rojane" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="heading-font text-2xl text-amber-800 mt-4">Rojane Kenney Madera</h3>
+                    <p class="text-gray-600">The Bride</p>
+                </div>
+                
+                <div class="md:w-1/5 text-center px-4 py-8">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-amber-700 flex items-center justify-center text-white text-2xl">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <svg class="w-32 h-32 mx-auto" viewBox="0 0 100 100">
+                            <path d="M20,50 Q50,20 80,50 Q50,80 20,50 Z" fill="none" stroke="#d4a373" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/3 text-center">
+                    <div class="rounded-full overflow-hidden border-4 border-amber-700 w-48 h-48 mx-auto shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="James" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="heading-font text-2xl text-amber-800 mt-4">James Andrei Pacaldo</h3>
+                    <p class="text-gray-600">The Groom</p>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-gray-700 mb-6">
+                    Rojane and James first met during a university basketball game where Rojane was cheering for her team and James was playing for the opposing side. Their eyes met across the court, and despite being on "rival" teams, they found an instant connection.
+                </p>
+                <p class="text-gray-700">
+                    After years of dating, countless basketball games, and romantic walks through Bohol's beautiful landscapes, James proposed during sunset at Alona Beach. Now, they're excited to begin their forever together surrounded by family and friends.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <div class="floral-divider transform rotate-180"></div>
+    
+    <!-- Wedding Details -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-font text-3xl md:text-4xl text-center text-amber-900 mb-16">Wedding Details</h2>
+            
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-calendar-alt text-3xl text-amber-700"></i>
+                    </div>
+                    <h3 class="heading-font text-2xl text-amber-800 mb-4">When</h3>
+                    <p class="text-gray-700 text-lg mb-2">June 20, 2025</p>
+                    <p class="text-gray-600">Ceremony: 3:00 PM</p>
+                    <p class="text-gray-600">Reception: 5:00 PM</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-3xl text-amber-700"></i>
+                    </div>
+                    <h3 class="heading-font text-2xl text-amber-800 mb-4">Where</h3>
+                    <p class="text-gray-700 text-lg mb-2">Fortridge Pavilion</p>
+                    <p class="text-gray-600">Upper Songcluan Dauis, Bohol</p>
+                    <p class="text-gray-600">Dauis, 6339 Bohol</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 max-w-4xl mx-auto">
+                <div class="map-container rounded-lg overflow-hidden shadow-lg">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31424.18610215338!2d123.84000000000001!3d9.633333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMzgnMDAuMCJOIDEyM8KwNTAnMjQuMCJF!5e0!3m2!1sen!2sph!4v1690000000000!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery -->
+    <section class="py-20 bg-amber-50">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-font text-3xl md:text-4xl text-center text-amber-900 mb-16">Our Gallery</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition duration-500 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215a31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Couple" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition duration-500 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Basketball" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition duration-500 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Proposal" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition duration-500 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Beach" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition duration-500 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Basketball" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition duration-500 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215a31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Couple" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RSVP -->
+    <section id="rsvp" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-font text-3xl md:text-4xl text-center text-amber-900 mb-16">RSVP</h2>
+            
+            <div class="max-w-2xl mx-auto bg-amber-50 rounded-lg shadow-lg p-8">
+                <p class="text-center text-gray-700 mb-8">Kindly respond by June 1, 2025</p>
+                
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+                    
+                    <div>
+                        <label for="guests" class="block text-gray-700 mb-2">Number of Guests</label>
+                        <select id="guests" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-4">Will you be attending?</label>
+                        <div class="flex space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="attending" value="yes" class="h-5 w-5 text-amber-600 focus:ring-amber-500" checked>
+                                <span class="ml-2 text-gray-700">Joyfully Accept</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="attending" value="no" class="h-5 w-5 text-amber-600 focus:ring-amber-500">
+                                <span class="ml-2 text-gray-700">Regretfully Decline</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-gray-700 mb-2">Message for the Couple (Optional)</label>
+                        <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-amber-700 hover:bg-amber-800 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                        Submit RSVP
+                    </button>
+                </form>
+                
+                <div class="mt-8 text-center text-gray-600">
+                    <p>For any questions, please contact:</p>
+                    <p class="font-medium text-amber-800">remadera@up.edu.ph</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 bg-amber-900 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="heading-font text-2xl mb-4">Rojane & James</h3>
+            <p class="mb-6">June 20, 2025 • Dauis, Bohol</p>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-white hover:text-amber-200 transition duration-300">
+                    <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-amber-200 transition duration-300">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-amber-200 transition duration-300">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+            </div>
+            
+            <p class="text-sm text-amber-200">© 2023 Rojane & James Wedding. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date("June 20, 2025 15:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown-days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("countdown-hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("countdown-minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("countdown-seconds").innerHTML = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your RSVP! We look forward to celebrating with you.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
