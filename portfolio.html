@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristan Jay Gabay | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #8E1616;
+            --primary-dark: #1D1616;
+            --secondary: #D84040;
+            --light: #EEEEEE;
+            --dark: #1D1616;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f1f1;
+            color: var(--dark);
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #8E1616 0%, #D84040 100%);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-overlay {
+            background: rgba(29, 22, 22, 0.8);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            left: -8px;
+            top: 0;
+            background-color: var(--secondary);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-[#1D1616] shadow-md z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-[#EEEEEE]">KJG</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">Home</a>
+                <a href="#about" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">About</a>
+                <a href="#experience" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">Experience</a>
+                <a href="#projects" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">Projects</a>
+                <a href="#contact" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">Contact</a>
+            </div>
+            <button class="md:hidden focus:outline-none" id="menu-btn">
+                <svg class="w-6 h-6 text-[#EEEEEE]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-[#1D1616] w-full px-6 py-3" id="mobile-menu">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">Home</a>
+                <a href="#about" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">About</a>
+                <a href="#experience" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">Experience</a>
+                <a href="#projects" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">Projects</a>
+                <a href="#contact" class="nav-link text-[#EEEEEE] hover:text-[#D84040] transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 hero-gradient text-[#EEEEEE]">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Kristan Jay Gabay</h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">Software Developer</h2>
+                    <p class="text-lg mb-8 max-w-lg">
+                        Entry-Level Software Engineer with a passion for problem-solving and a strong foundation in computer science principles.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-[#EEEEEE] text-[#8E1616] px-6 py-2 rounded-full font-medium hover:bg-[#D84040] hover:text-[#EEEEEE] transition">Contact Me</a>
+                        <a href="#projects" class="border-2 border-[#EEEEEE] px-6 py-2 rounded-full font-medium hover:bg-[#EEEEEE] hover:text-[#8E1616] transition">View Projects</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-fade-in delay-100">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-[#1D1616] rounded-full shadow-xl overflow-hidden">
+                        <!-- Placeholder for profile image -->
+                        <div class="w-full h-full bg-[#8E1616] flex items-center justify-center">
+                            <span class="text-4xl text-[#EEEEEE]">KJG</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-[#EEEEEE]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#1D1616]">About Me</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 animate-fade-in">
+                    <h3 class="text-2xl font-semibold mb-4 text-[#8E1616]">Professional Summary</h3>
+                    <p class="text-[#1D1616] mb-6">
+                        Proficient in C, Python, and JavaScript, with hands-on experience in web, mobile, and game development. 
+                        Demonstrated ability to work effectively in team environments through various collaborative projects 
+                        and hackathons. Eager to contribute to innovative projects and learn from experienced professionals 
+                        in a dynamic tech environment.
+                    </p>
+                    
+                    <h3 class="text-2xl font-semibold mb-4 mt-8 text-[#8E1616]">Skills</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="bg-[#1D1616] p-3 rounded-lg skill-card transition text-[#EEEEEE]">
+                            <i class="fas fa-code text-[#D84040] mb-1"></i>
+                            <span class="font-medium">Team Collaboration</span>
+                        </div>
+                        <div class="bg-[#1D1616] p-3 rounded-lg skill-card transition text-[#EEEEEE]">
+                            <i class="fas fa-lightbulb text-[#D84040] mb-1"></i>
+                            <span class="font-medium">Problem-Solving</span>
+                        </div>
+                        <div class="bg-[#1D1616] p-3 rounded-lg skill-card transition text-[#EEEEEE]">
+                            <i class="fas fa-brain text-[#D84040] mb-1"></i>
+                            <span class="font-medium">Critical Thinking</span>
+                        </div>
+                        <div class="bg-[#1D1616] p-3 rounded-lg skill-card transition text-[#EEEEEE]">
+                            <i class="fas fa-sync-alt text-[#D84040] mb-1"></i>
+                            <span class="font-medium">Adaptability</span>
+                        </div>
+                        <div class="bg-[#1D1616] p-3 rounded-lg skill-card transition text-[#EEEEEE]">
+                            <i class="fas fa-bolt text-[#D84040] mb-1"></i>
+                            <span class="font-medium">Quick Learner</span>
+                        </div>
+                        <div class="bg-[#1D1616] p-3 rounded-lg skill-card transition text-[#EEEEEE]">
+                            <i class="fas fa-palette text-[#D84040] mb-1"></i>
+                            <span class="font-medium">Creative Thinker</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 animate-fade-in delay-100">
+                    <h3 class="text-2xl font-semibold mb-4 text-[#8E1616]">Education</h3>
+                    <div class="space-y-6">
+                        <div class="pl-6 border-l-2 border-[#8E1616] relative">
+                            <div class="absolute -left-1 top-0 w-2 h-2 bg-[#8E1616] rounded-full"></div>
+                            <h4 class="font-bold text-[#1D1616]">Bachelor of Science in Computer Science</h4>
+                            <p class="text-[#1D1616]">University of the Philippines, Visayas</p>
+                            <p class="text-sm text-[#8E1616]">2020 - Present</p>
+                            <p class="mt-1 text-[#1D1616]">With High Honors</p>
+                        </div>
+                        
+                        <div class="pl-6 border-l-2 border-[#8E1616] relative">
+                            <div class="absolute -left-1 top-0 w-2 h-2 bg-[#8E1616] rounded-full"></div>
+                            <h4 class="font-bold text-[#1D1616]">Bayawan City Science and Technology Education Center High School</h4>
+                            <p class="text-[#1D1616]">Graduate</p>
+                            <p class="text-sm text-[#8E1616]">2014 - 2020</p>
+                        </div>
+                        
+                        <div class="pl-6 border-l-2 border-[#8E1616] relative">
+                            <div class="absolute -left-1 top-0 w-2 h-2 bg-[#8E1616] rounded-full"></div>
+                            <h4 class="font-bold text-[#1D1616]">CS50's Mobile App Development with React Native</h4>
+                            <p class="text-[#1D1616]">Harvard University (Online Open Course)</p>
+                            <p class="text-sm text-[#8E1616]">2024 - Present</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-semibold mb-4 mt-8 text-[#8E1616]">Hobbies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[#1D1616] px-3 py-1 rounded-full text-sm text-[#EEEEEE]">Painting</span>
+                        <span class="bg-[#1D1616] px-3 py-1 rounded-full text-sm text-[#EEEEEE]">Sketching</span>
+                        <span class="bg-[#1D1616] px-3 py-1 rounded-full text-sm text-[#EEEEEE]">Martial Arts</span>
+                        <span class="bg-[#1D1616] px-3 py-1 rounded-full text-sm text-[#EEEEEE]">Wood Craft</span>
+                        <span class="bg-[#1D1616] px-3 py-1 rounded-full text-sm text-[#EEEEEE]">Handicrafts</span>
+                        <span class="bg-[#1D1616] px-3 py-1 rounded-full text-sm text-[#EEEEEE]">UI/UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-[#1D1616]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#EEEEEE]">Experience</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-8">
+                    <!-- Experience 1 -->
+                    <div class="pl-8 border-l-2 border-[#D84040] relative timeline-item animate-fade-in">
+                        <div class="bg-[#EEEEEE] p-6 rounded-lg shadow-md">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#8E1616]">Intern</h3>
+                                    <p class="text-[#1D1616]">Bayawan City Engineering Office</p>
+                                </div>
+                                <span class="bg-[#8E1616] text-[#EEEEEE] px-3 py-1 rounded-full text-sm">Feb 2020 — Mar 2020</span>
+                            </div>
+                            <ul class="mt-4 space-y-2 text-[#1D1616]">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Created an architectural structure employing the AutoCAD software.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Conducted on-site assessments of construction locations and verified their status.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience 2 -->
+                    <div class="pl-8 border-l-2 border-[#D84040] relative timeline-item animate-fade-in delay-100">
+                        <div class="bg-[#EEEEEE] p-6 rounded-lg shadow-md">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#8E1616]">Hackathon Participant</h3>
+                                    <p class="text-[#1D1616]">Warrior's Crusade Game Development</p>
+                                </div>
+                                <span class="bg-[#8E1616] text-[#EEEEEE] px-3 py-1 rounded-full text-sm">2018 — Present</span>
+                            </div>
+                            <ul class="mt-4 space-y-2 text-[#1D1616]">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Team Composition: Collaborated with a team of 5 members.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Project: Reimagined the classic 1979 game, Asteroids.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Technology Used: Unity 3D, GitHub for collaboration.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Achievement: Secured the Champion place.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience 3 -->
+                    <div class="pl-8 border-l-2 border-[#D84040] relative timeline-item animate-fade-in delay-200">
+                        <div class="bg-[#EEEEEE] p-6 rounded-lg shadow-md">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#8E1616]">Freelance Video and Photo Editor</h3>
+                                    <p class="text-[#1D1616]">Self-Employed</p>
+                                </div>
+                                <span class="bg-[#8E1616] text-[#EEEEEE] px-3 py-1 rounded-full text-sm">July 2016 - May 2019</span>
+                            </div>
+                            <ul class="mt-4 space-y-2 text-[#1D1616]">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Adept at using Filmora and Adobe Premiere Pro for video editing and Adobe Photoshop for Photo Editing.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Skilled at using various tools in Photoshop to blend images together.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#8E1616] mt-1 mr-2"></i>
+                                    <span>Collaborated with Ilawod Southern Negros to create public awareness posters concerning the fisheries sector.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="py-16 bg-[#EEEEEE]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#1D1616]">Tech Stack</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fab fa-html5 text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">HTML & CSS</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fab fa-js text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">JavaScript</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fab fa-python text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">Python</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fab fa-java text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">Java</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fas fa-database text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">SQL</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fab fa-php text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">PHP</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fab fa-git-alt text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">Git</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fas fa-mobile-alt text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">Flutter/Dart</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fas fa-gamepad text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">Unity</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fab fa-react text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">React Native</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fas fa-cube text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">C#</h3>
+                </div>
+                <div class="bg-[#1D1616] p-6 rounded-lg text-center hover:shadow-lg transition text-[#EEEEEE]">
+                    <i class="fas fa-database text-4xl text-[#D84040] mb-2"></i>
+                    <h3 class="font-medium">MySQL</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-[#1D1616]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#EEEEEE]">Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-[#EEEEEE] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 animate-fade-in">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="w-full h-full bg-[#8E1616] flex items-center justify-center">
+                            <span class="text-2xl text-[#EEEEEE]">Genshin Impact Lyre Simulator</span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center project-overlay">
+                            <a href="#" class="text-[#EEEEEE] bg-[#8E1616] px-4 py-2 rounded-full font-medium hover:bg-[#D84040] transition">View Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#1D1616]">Genshin Impact Lyre Simulator</h3>
+                        <p class="text-[#1D1616] mb-4">2022 | Instrument Simulator made in Java</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-[#1D1616] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">Java</span>
+                            <span class="bg-[#8E1616] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">Music</span>
+                            <span class="bg-[#D84040] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">Simulation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-[#EEEEEE] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 animate-fade-in delay-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="w-full h-full bg-[#8E1616] flex items-center justify-center">
+                            <span class="text-2xl text-[#EEEEEE]">KanTinir Mobile App</span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center project-overlay">
+                            <a href="#" class="text-[#EEEEEE] bg-[#8E1616] px-4 py-2 rounded-full font-medium hover:bg-[#D84040] transition">View Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#1D1616]">KanTinir Mobile App</h3>
+                        <p class="text-[#1D1616] mb-4">2024 | Food and Housing Mobile App for University of the Philippines Visayas, Miagao Constituents</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-[#1D1616] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">React Native</span>
+                            <span class="bg-[#8E1616] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">Mobile</span>
+                            <span class="bg-[#D84040] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">University</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-[#EEEEEE] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 animate-fade-in delay-200">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="w-full h-full bg-[#8E1616] flex items-center justify-center">
+                            <span class="text-2xl text-[#EEEEEE]">Ceres Terminal</span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center project-overlay">
+                            <a href="#" class="text-[#EEEEEE] bg-[#8E1616] px-4 py-2 rounded-full font-medium hover:bg-[#D84040] transition">View Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#1D1616]">Ceres Terminal</h3>
+                        <p class="text-[#1D1616] mb-4">2024 | Unity game reimagining the 1979 classical game 'Asteroids'</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-[#1D1616] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">Unity</span>
+                            <span class="bg-[#8E1616] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">C#</span>
+                            <span class="bg-[#D84040] text-[#EEEEEE] px-2 py-1 rounded-full text-xs">Game Dev</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-[#EEEEEE]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#1D1616]">Get In Touch</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 animate-fade-in">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-[#1D1616] font-medium mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-[#1D1616] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E1616]">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-[#1D1616] font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-[#1D1616] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E1616]">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-[#1D1616] font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-[#1D1616] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E1616]"></textarea>
+                        </div>
+                        <button type="submit" class="bg-[#8E1616] text-[#EEEEEE] px-6 py-3 rounded-lg font-medium hover:bg-[#D84040] transition">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2 animate-fade-in delay-100">
+                    <div class="bg-[#1D1616] p-8 rounded-lg h-full text-[#EEEEEE]">
+                        <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-[#D84040] mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Email</h4>
+                                    <a href="mailto:gabaykristan@gmail.com" class="hover:text-[#D84040] transition">gabaykristan@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-[#D84040] mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Phone</h4>
+                                    <a href="tel:+639368751926" class="hover:text-[#D84040] transition">+63 936-875-1926</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-[#D84040] mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">Location</h4>
+                                    <p>Miagao, Iloilo, Philippines</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fab fa-github text-[#D84040] mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-medium">GitHub</h4>
+                                    <a href="#" class="hover:text-[#D84040] transition">GitHub Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold mb-4">Connect With Me</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-[#8E1616] text-[#EEEEEE] rounded-full flex items-center justify-center hover:bg-[#D84040] transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-[#8E1616] text-[#EEEEEE] rounded-full flex items-center justify-center hover:bg-[#D84040] transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-[#8E1616] text-[#EEEEEE] rounded-full flex items-center justify-center hover:bg-[#D84040] transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-[#8E1616] text-[#EEEEEE] rounded-full flex items-center justify-center hover:bg-[#D84040] transition">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-[#1D1616] text-[#EEEEEE]">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-2xl font-bold">Kristan Jay Gabay</a>
+                    <p class="text-[#D84040] mt-1">Software Developer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="hover:text-[#D84040] transition">Home</a>
+                    <a href="#about" class="hover:text-[#D84040] transition">About</a>
+                    <a href="#experience" class="hover:text-[#D84040] transition">Experience</a>
+                    <a href="#projects" class="hover:text-[#D84040] transition">Projects</a>
+                    <a href="#contact" class="hover:text-[#D84040] transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-[#8E1616] mt-8 pt-8 text-center text-[#D84040]">
+                <p>&copy; 2024 Kristan Jay Gabay. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Highlight active navigation link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate-fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
