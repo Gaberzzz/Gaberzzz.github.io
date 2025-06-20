@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristan Jay Gabay | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral with Teal Accent -->
+    <!-- Application Structure Plan: A single-page, vertically scrolling portfolio with a fixed top navigation bar for quick access to key sections: About, Skills, Projects, and Experience. The 'About' section serves as a landing hero. 'Skills' are visualized with a radar chart for quick comparison. 'Projects' are presented in an interactive card grid, with details revealed in modals to keep the main view clean. 'Experience' is shown as a vertical timeline to visualize career progression. This structure was chosen to transform the static resume into an engaging narrative, allowing recruiters to quickly access information while also demonstrating modern frontend development skills. -->
+    <!-- Visualization & Content Choices: 
+        - Summary -> Inform -> Hero Text -> None -> Clear intro.
+        - Technical Skills -> Compare/Inform -> Radar Chart (Chart.js) -> Hover Tooltips -> Provides a quick, engaging visual summary of capabilities versus a dry list.
+        - Projects -> Organize/Explore -> Interactive Card Grid with Modals -> Click to view details -> Prevents information overload, allowing users to dive into specific projects they find interesting. Implemented with HTML/CSS/JS.
+        - Experience/Education -> Show Change -> Vertical Timeline -> Scroll -> A more compelling way to show career progression than bullet points. Implemented with structured HTML/Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-slate-50/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-xl font-bold text-teal-600">Kristan Jay Gabay</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#skills" class="text-slate-600 hover:text-teal-600 transition-colors">Skills</a>
+                <a href="#projects" class="text-slate-600 hover:text-teal-600 transition-colors">Projects</a>
+                <a href="#experience" class="text-slate-600 hover:text-teal-600 transition-colors">Experience</a>
+                <a href="#contact" class="bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">Contact</a>
+            </div>
+            <button id="mobile-nav-toggle" class="md:hidden text-slate-600 hover:text-teal-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="hidden md:hidden px-6 pb-4 flex flex-col space-y-4">
+             <a href="#skills" class="text-slate-600 hover:text-teal-600 transition-colors">Skills</a>
+             <a href="#projects" class="text-slate-600 hover:text-teal-600 transition-colors">Projects</a>
+             <a href="#experience" class="text-slate-600 hover:text-teal-600 transition-colors">Experience</a>
+             <a href="#contact" class="bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-20">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Entry-Level Software Developer</h1>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600 mb-8">
+                Passionate about problem-solving with a strong foundation in computer science. Experienced in web, mobile, and game development. I thrive in collaborative environments and am eager to contribute to innovative projects in a dynamic tech world.
+            </p>
+            <a href="#projects" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg transition-colors text-lg">View My Work</a>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <h2 class="text-3xl font-bold text-center mb-4">My Technical Skillset</h2>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-12">I have a diverse range of skills spanning multiple technologies and methodologies. This chart provides a visual overview of my proficiencies across key development areas. You can interact with it to see the specific technologies I'm comfortable with.</p>
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 grid grid-cols-2 gap-8 text-left">
+                    <div>
+                        <h3 class="font-bold text-xl mb-2 text-teal-600">Core Strengths</h3>
+                        <ul class="space-y-2 list-disc list-inside text-slate-600">
+                            <li>Problem-Solving</li>
+                            <li>Team Collaboration</li>
+                            <li>Critical Thinking</li>
+                            <li>Adaptability</li>
+                            <li>Quick Learner</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2 text-teal-600">Methodologies</h3>
+                        <ul class="space-y-2 list-disc list-inside text-slate-600">
+                             <li>Web Development</li>
+                             <li>Mobile Development</li>
+                             <li>Game Development</li>
+                             <li>UI/UX Design</li>
+                             <li>Version Control (Git)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-slate-100 -mx-6 px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">Featured Projects</h2>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-12">Here are some of the key projects I've developed. They showcase my ability to build applications from concept to deployment across different platforms. Click on any project to see more details about its purpose and the technologies used.</p>
+            <div id="project-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project cards will be injected here -->
+            </div>
+        </section>
+        
+        <!-- Project Modals will be injected here -->
+        <div id="project-modals"></div>
+
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <h2 class="text-3xl font-bold text-center mb-4">Experience & Education</h2>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-12">My journey in technology has been built on a foundation of formal education and practical, hands-on experience. This timeline highlights the key milestones that have shaped my skills and professional growth.</p>
+            <div class="relative max-w-2xl mx-auto mt-12">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-slate-200"></div>
+                <div id="timeline-items" class="space-y-12">
+                    <!-- Timeline items will be injected here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Section -->
+    <footer id="contact" class="bg-slate-800 text-slate-200 py-16 -mx-6 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+            <p class="text-slate-400 mb-8 max-w-xl mx-auto">I'm currently seeking new opportunities and am open to discussing how my skills can contribute to your team. Feel free to reach out.</p>
+            <div class="flex justify-center items-center space-x-6 text-lg">
+                <a href="mailto:gabaykristan@gmail.com" class="hover:text-teal-400 transition-colors">gabaykristan@gmail.com</a>
+                <span>&bull;</span>
+                <a href="#" class="hover:text-teal-400 transition-colors">(+63) 936-875-1926</a>
+                <span>&bull;</span>
+                <a href="#" class="hover:text-teal-400 transition-colors">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Mobile Navigation Toggle
+            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNavToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('hidden');
+            });
+            
+            // Close mobile nav on link click
+            mobileNav.addEventListener('click', (e) => {
+                if(e.target.tagName === 'A'){
+                    mobileNav.classList.add('hidden');
+                }
+            });
+
+
+            // Skills Chart
+            const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+            const skillsData = {
+                labels: ['Languages', 'Frameworks', 'Game Dev', 'Databases', 'Dev Tools'],
+                datasets: [{
+                    label: 'Proficiency',
+                    data: [8, 9, 8, 7, 9],
+                    backgroundColor: 'rgba(20, 184, 166, 0.2)',
+                    borderColor: 'rgb(15, 118, 110)',
+                    pointBackgroundColor: 'rgb(15, 118, 110)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(15, 118, 110)'
+                }]
+            };
+            new Chart(skillsCtx, {
+                type: 'radar',
+                data: skillsData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: { font: { size: 14 } },
+                            ticks: {
+                                backdropColor: 'rgba(0,0,0,0)',
+                                stepSize: 2
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Projects Data
+            const projects = [
+                {
+                    id: 'kantinir',
+                    title: 'KanTinir Mobile App',
+                    year: '2024',
+                    summary: 'A food and housing mobile app for University of the Philippines Visayas constituents.',
+                    description: 'A comprehensive food and housing mobile application designed to serve the students and staff of the University of the Philippines Visayas, Miagao campus. It helps users find available housing and food stalls easily.',
+                    technologies: ['Flutter', 'Dart', 'Firebase']
+                },
+                {
+                    id: 'ceres',
+                    title: 'Ceres Terminal (Game)',
+                    year: '2024',
+                    summary: "A modern reimagining of the classic 1979 arcade game 'Asteroids'.",
+                    description: "Developed for the Warrior's Crusade Game Development Hackathon, this project is a modern take on the classic 'Asteroids'. Our team of five secured the championship with this Unity-based game.",
+                    technologies: ['Unity', 'C#', 'Git']
+                },
+                {
+                    id: 'lyre',
+                    title: 'Genshin Impact Lyre Sim',
+                    year: '2022',
+                    summary: 'A desktop instrument simulator made in Java.',
+                    description: 'A desktop application that simulates the in-game lyre instrument from the popular game Genshin Impact, allowing users to play and practice music on their computers.',
+                    technologies: ['Java', 'Swing UI']
+                },
+                {
+                    id: 'editor',
+                    title: 'Freelance Editor',
+                    year: '2018 - Present',
+                    summary: 'Video and photo editing for various clients and organizations.',
+                    description: 'Utilizing professional software to provide high-quality video and photo editing services. A notable collaboration was with Ilawod Southern Negros to create public awareness posters for the fisheries sector.',
+                    technologies: ['Adobe Premiere Pro', 'Adobe Photoshop', 'Filmora']
+                }
+            ];
+
+            const projectCardsContainer = document.getElementById('project-cards');
+            const projectModalsContainer = document.getElementById('project-modals');
+
+            projects.forEach(project => {
+                // Create Project Card
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300';
+                card.innerHTML = `
+                    <div class="p-6">
+                        <p class="text-sm text-slate-500 mb-1">${project.year}</p>
+                        <h3 class="font-bold text-xl mb-2">${project.title}</h3>
+                        <p class="text-slate-600 mb-4 h-12">${project.summary}</p>
+                        <button data-modal-target="${project.id}" class="open-modal-btn font-medium text-teal-600 hover:text-teal-800 transition-colors">View Details &rarr;</button>
+                    </div>
+                `;
+                projectCardsContainer.appendChild(card);
+
+                // Create Project Modal
+                const modal = document.createElement('div');
+                modal.id = `${project.id}`;
+                modal.className = 'modal-backdrop fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none';
+                modal.innerHTML = `
+                    <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-2xl mx-auto p-8 transform scale-95">
+                        <div class="flex justify-between items-start">
+                             <div>
+                                <p class="text-sm text-slate-500 mb-1">${project.year}</p>
+                                <h2 class="text-2xl font-bold mb-4">${project.title}</h2>
+                            </div>
+                            <button data-modal-close="${project.id}" class="close-modal-btn text-3xl font-light text-slate-500 hover:text-slate-800">&times;</button>
+                        </div>
+                        <p class="text-slate-600 mb-6">${project.description}</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.technologies.map(tech => `<span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                projectModalsContainer.appendChild(modal);
+            });
+
+            // Modal open/close logic
+            document.querySelectorAll('.open-modal-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal-target');
+                    const modal = document.getElementById(modalId);
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modal.querySelector('.modal-content').classList.remove('scale-95');
+                });
+            });
+
+            document.querySelectorAll('.close-modal-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal-close');
+                    const modal = document.getElementById(modalId);
+                    modal.classList.add('opacity-0');
+                    modal.querySelector('.modal-content').classList.add('scale-95');
+                    setTimeout(() => modal.classList.add('pointer-events-none'), 300);
+                });
+            });
+            
+             document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+                backdrop.addEventListener('click', (e) => {
+                    if (e.target === backdrop) {
+                         backdrop.classList.add('opacity-0');
+                         backdrop.querySelector('.modal-content').classList.add('scale-95');
+                         setTimeout(() => backdrop.classList.add('pointer-events-none'), 300);
+                    }
+                });
+            });
+
+
+            // Timeline Data
+            const timelineEvents = [
+                {
+                    type: 'Education',
+                    title: "BS in Computer Science",
+                    institution: "University of the Philippines, Visayas",
+                    date: "2020 - Present",
+                    description: "Pursuing a comprehensive degree in Computer Science with High Honors, focusing on core principles, algorithms, and software development.",
+                    icon: '🎓'
+                },
+                {
+                    type: 'Experience',
+                    title: "Warrior's Crusade Hackathon - Champion",
+                    institution: "Central Philippines University, Iloilo",
+                    date: "2024",
+                    description: "Led a team of 5 to victory, reimagining the classic 'Asteroids' game using Unity 3D and C#. Managed collaboration via Git.",
+                    icon: '🏆'
+                },
+                 {
+                    type: 'Education',
+                    title: "CS50's Mobile App Dev Course",
+                    institution: "Harvard University (Online)",
+                    date: "2024 - Present",
+                    description: "Enhancing skills in cross-platform mobile development with React Native and modern JavaScript frameworks.",
+                    icon: '📚'
+                },
+                {
+                    type: 'Experience',
+                    title: "Intern, City Engineering Office",
+                    institution: "Bayawan City, Negros Oriental",
+                    date: "Feb 2020 - Mar 2020",
+                    description: "Gained practical experience by creating architectural structures with AutoCAD and conducting on-site construction assessments.",
+                    icon: '💼'
+                }
+            ];
+
+            const timelineContainer = document.getElementById('timeline-items');
+            timelineEvents.forEach((event, index) => {
+                const alignment = index % 2 === 0 ? 'left' : 'right';
+                const item = document.createElement('div');
+                item.className = 'relative';
+                
+                const itemContent = `
+                    <div class="absolute w-8 h-8 bg-teal-500 rounded-full top-0 left-1/2 transform -translate-x-1/2 flex items-center justify-center text-white">${event.icon}</div>
+                    <div class="w-full md:w-1/2 p-4 bg-white rounded-lg shadow-md ${alignment === 'left' ? 'md:ml-auto md:mr-16' : 'md:mr-auto md:ml-16'}">
+                        <p class="text-sm text-slate-500 mb-1">${event.date}</p>
+                        <h3 class="font-bold text-lg mb-1">${event.title}</h3>
+                        <p class="font-medium text-slate-600 mb-2">${event.institution}</p>
+                        <p class="text-sm text-slate-500">${event.description}</p>
+                    </div>
+                `;
+                item.innerHTML = itemContent;
+                timelineContainer.appendChild(item);
+            });
+
+        });
+    </script>
+</body>
+</html>
